@@ -5,16 +5,32 @@ import "bootstrap/dist/js/bootstrap.js";
 
 // components
 import Navbar from "./components/Navbar";
-// import TextForm from "./components/TextForm";
-import About from "./components/About";
+import TextForm from "./components/TextForm";
+import { useState } from "react";
+// import About from "./components/About";
 
 function App() {
+  const [mode, setMode] = useState("light");
+  const toggleMode = () => {
+    if (mode === "light") {
+      setMode("dark");
+      document.body.style.backgroundColor = "#152640";
+    } else {
+      setMode("light");
+      document.body.style.backgroundColor = "white";
+    }
+  };
   return (
     <>
-      <Navbar title="TextUtils" aboutText="About us"></Navbar>
+      <Navbar
+        title="TextUtils"
+        aboutText="About us"
+        mode={mode}
+        toggleMode={toggleMode}
+      ></Navbar>
       <div className="container my-3">
-        {/* <TextForm heading="Enter the text to analyze below" /> */}
-        <About />
+        <TextForm heading="Enter the text to analyze below" mode={mode} />
+        {/* <About /> */}
       </div>
     </>
   );
