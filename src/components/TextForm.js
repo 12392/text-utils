@@ -8,16 +8,19 @@ export default function TextForm(props) {
   const handleUpClick = () => {
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("UpperCase has been enabled", "success");
   };
 
   const handleClearClick = () => {
     let newText = "";
     setText(newText);
+    props.showAlert("Text has been cleaned", "success");
   };
 
   const handleLowClick = () => {
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("LowerCase has been enabled", "success");
   };
 
   const handleOnChange = (e) => {
@@ -27,6 +30,7 @@ export default function TextForm(props) {
   const handleExtraSpace = () => {
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
+    props.showAlert("ExtraSpace has been Removed", "success");
   };
 
   return (
